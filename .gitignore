@@ -1,0 +1,39 @@
+### .gitignore home ~/ | .gitignore to exclude all files except for specific files or specific subdirectories
+### CC0 Christopher Allen @ChristopherA (http://creativecommons.org/publicdomain/zero/1.0/)
+
+## Unlike other .gitignore patterns, using git for home ~/ is can be
+## dangerous as it tracks ALL changes, including changes that may
+## include secrets. This .gitignore forces you to specifically add each
+## file or subdirectory to be tracked by git by adding them to this file.
+
+## Ignore all in the root and in all subdirectories
+/**
+
+# Override ignore all to force include these specific files in the root
+!.gitignore
+
+## Override ignore all to force allow all files in a subdirectories recursively
+## (pattern: allow specific subdir -> allow all in it)
+## Test with `git add --dry-run .`
+
+# !/dontignore/
+# !/dontignore/**
+
+## Override ignore to force allow specific files under a subdirectory
+## (pattern: allow specific subdir -> exclude all in dir -> allow specific)
+## Test with `git add --dry-run .`
+
+# !/.ssh/
+# /.ssh/**
+# !/.ssh/config
+
+## Ignore specific files in any subdirectories that have been overrides above.
+
+**/.DS_Store
+
+## NOTE: There does not appear to be a way to force to include a file no
+## matter which subdirectory it is in. You must follow the above folder 
+## include pattern for each instance of a subdirectories. Particularly relevant
+## relevances if there are .gitignore files in subdirs -- they must be
+## added individually.
+
